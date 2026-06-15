@@ -1,0 +1,157 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>University Student Hub</title>  
+    <link rel="stylesheet" href="style.css">  
+</head>  
+<body>  <header id="app-header">  
+    <h1>UniHub</h1>  
+    <div id="financial-alert" class="alert-banner">⚠️ Warning: Overdue Lab Fees Balance!</div>  
+</header>  
+
+<main id="content-area">  
+      
+    <section id="dashboard" class="app-screen">  
+        <h2>Notifications & Announcements</h2>  
+        <div class="card urgent"><strong>Urgent:</strong> Room change for Advanced Software Engineering to Block G.</div>  
+        <div class="card"><strong>Announcement:</strong> Extended library hours for exam preparation week.</div>  
+    </section>  
+
+    <section id="courses" class="app-screen hidden">  
+        <h2>Academic Programs</h2>  
+          
+        <div class="school-tabs">  
+            <button class="tab-btn active" onclick="filterSchool('ns')">Nat. Sciences</button>  
+            <button class="tab-btn" onclick="filterSchool('hss')">Humanities</button>  
+            <button class="tab-btn" onclick="filterSchool('law')">Law</button>  
+            <button class="tab-btn" onclick="filterSchool('agric')">Agriculture</button>  
+        </div>  
+
+        <div id="school-ns" class="school-group">  
+            <div class="course-item" onclick="toggleOutline('outline-bio')">  
+                <h3>Introductory Biology (BIO 1400) ▾</h3>  
+                <div id="outline-bio" class="outline hidden">  
+                    <p><strong>Outline:</strong> Cell biology, genetics, and plant/animal physiology. Includes mandatory laboratory sessions on macromolecule identification (lipids, starch).</p>  
+                    <p><strong>Assessment:</strong> 40% Continuous Assessment, 60% Final Exam.</p>  
+                </div>  
+            </div>  
+            <div class="course-item" onclick="toggleOutline('outline-che')">  
+                <h3>General Chemistry (CHE 1010) ▾</h3>  
+                <div id="outline-che" class="outline hidden">  
+                    <p><strong>Outline:</strong> Stoichiometry, atomic structure, periodic trends, chemical equilibrium, and basic electrochemistry.</p>  
+                    <p><strong>Assessment:</strong> 30% Continuous Assessment, 70% Final Exam.</p>  
+                </div>  
+            </div>  
+            <div class="course-item" onclick="toggleOutline('outline-mat')">  
+                <h3>Introductory Mathematics (MAT 1100) ▾</h3>  
+                <div id="outline-mat" class="outline hidden">  
+                    <p><strong>Outline:</strong> Set theory, complex numbers, relations and functions, and the binomial theorem.</p>  
+                    <p><strong>Assessment:</strong> 40% Continuous Assessment, 60% Final Exam.</p>  
+                </div>  
+            </div>  
+        </div>  
+
+        <div id="school-hss" class="school-group hidden">  
+            <div class="course-item" onclick="toggleOutline('outline-es')">  
+                <h3>Introduction to Environmental Studies (ENS 1100) ▾</h3>  
+                <div id="outline-es" class="outline hidden">  
+                    <p><strong>Outline:</strong> Human-environment interactions, sustainable development, ecosystems, and climate change impacts.</p>  
+                    <p><strong>Assessment:</strong> 50% Coursework, 50% Exam.</p>  
+                </div>  
+            </div>  
+            <div class="course-item" onclick="toggleOutline('outline-soc')">  
+                <h3>Introduction to Sociology (SOC 1010) ▾</h3>  
+                <div id="outline-soc" class="outline hidden">  
+                    <p><strong>Outline:</strong> Social institutions, culture, socialization, deviance, and social stratification theories.</p>  
+                    <p><strong>Assessment:</strong> 40% Assignments/Tests, 60% Final Exam.</p>  
+                </div>  
+            </div>  
+        </div>  
+
+        <div id="school-law" class="school-group hidden">  
+            <div class="course-item" onclick="toggleOutline('outline-legal')">  
+                <h3>Legal Process (LwP 1100) ▾</h3>  
+                <div id="outline-legal" class="outline hidden">  
+                    <p><strong>Outline:</strong> Structure of the legal system, sources of law, statutory interpretation, and judicial precedent.</p>  
+                    <p><strong>Assessment:</strong> 40% Case Studies/Moot, 60% Final Exam.</p>  
+                </div>  
+            </div>  
+            <div class="course-item" onclick="toggleOutline('outline-con')">  
+                <h3>Constitutional Law (LwC 2100) ▾</h3>  
+                <div id="outline-con" class="outline hidden">  
+                    <p><strong>Outline:</strong> Separation of powers, fundamental human rights, judicial review, and state sovereignty frameworks.</p>  
+                    <p><strong>Assessment:</strong> 30% Continuous Assessment, 70% Final Exam.</p>  
+                </div>  
+            </div>  
+        </div>  
+
+        <div id="school-agric" class="school-group hidden">  
+            <div class="course-item" onclick="toggleOutline('outline-crop')">  
+                <h3>Introduction to Crop Science (AGC 1100) ▾</h3>  
+                <div id="outline-crop" class="outline hidden">  
+                    <p><strong>Outline:</strong> Crop propagation, soil-plant relationships, weed management, and cropping systems optimization.</p>  
+                    <p><strong>Assessment:</strong> 40% Practical Logbooks, 60% Exam.</p>  
+                </div>  
+            </div>  
+            <div class="course-item" onclick="toggleOutline('outline-soil')">  
+                <h3>Fundamentals of Soil Science (AGS 2110) ▾</h3>  
+                <div id="outline-soil" class="outline hidden">  
+                    <p><strong>Outline:</strong> Physical, chemical, and biological properties of soil; soil fertility, and nutrient lifecycle tracking.</p>  
+                    <p><strong>Assessment:</strong> 50% Lab/Field Work, 50% Final Exam.</p>  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
+
+    <section id="results" class="app-screen hidden">  
+        <h2>Academic Results</h2>  
+        <div id="results-locked" class="locked-notice">  
+            🔒 Results are temporarily withheld due to an outstanding ledger balance.  
+        </div>  
+        <div id="results-content" class="hidden">  
+            <p>GPA: 3.82</p>  
+            <div class="card">BIO 1400: Grade A</div>  
+            <div class="card">MAT 1100: Grade A-</div>  
+            <div class="card">CHE 1010: Grade B+</div>  
+        </div>  
+    </section>  
+
+    <section id="payments" class="app-screen hidden">  
+        <h2>Financial Ledger</h2>  
+        <div class="card fee-due">  
+            <p>Lab Fees: $250.00</p>  
+            <p class="status">Status: <strong>OVERDUE</strong></p>  
+            <button id="pay-btn" onclick="clearFees()">Clear Outstanding Balance</button>  
+        </div>  
+    </section>  
+
+    <section id="profile" class="app-screen hidden">  
+        <h2>Student Profile</h2>  
+        <div class="id-card">  
+            <div class="id-header"><h3>UNIVERSITY CAMPUS ID</h3></div>  
+            <div class="id-body">  
+                <div class="id-avatar">👤</div>  
+                <div class="id-details">  
+                    <p class="id-name">Emmanuel Kangwa</p>  
+                    <p><strong>ID Number:</strong> 2026-88412</p>  
+                    <p><strong>Program:</strong> B.Sc. Natural Sciences</p>  
+                    <p><strong>Status:</strong> Active</p>  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
+</main>  
+
+<nav id="bottom-nav">  
+    <button onclick="switchScreen('dashboard')">Home</button>  
+    <button onclick="switchScreen('courses')">Courses</button>  
+    <button onclick="switchScreen('results')">Results</button>  
+    <button onclick="switchScreen('payments')">Pay</button>  
+    <button onclick="switchScreen('profile')">Profile</button>  
+</nav>  
+
+<script src="app.js"></script>
+
+</body>  
+</html>  
